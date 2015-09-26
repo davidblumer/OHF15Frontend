@@ -50,11 +50,21 @@
         margin-left: 25px;
         margin-right: 25px;
     }
+    .search-reset {
+        margin-top: 20px;
+        display: none;
+        left: -250px;
+        width: 200px;
+        transition: all 0.5s ease 0s;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
     .filter-divider {
         left: -250px;
         width: 230px;
         margin-left: 10px;
         margin-right:10px;
+        margin-top:10px;
         border-top: 1px solid #fff;
         transition: all 0.5s ease 0s;
     }
@@ -85,20 +95,26 @@
         line-height: 45px;
         color: #fff;
         background-color: #8dc9a4;
+        cursor: pointer;
     }
     .checkbox:hover {
         background-color: #5ca48c;
     }
-
+    .checkbox label {
+        display: block;
+        padding-right: 20px;
+    }
     .filter-true {
         color: greenyellow;
         position: relative;
         float: right;
+        margin-top: 15px;
     }
     .filter-false {
-        margin-left: 70px;
         color: red;
         position: relative;
+        float: right;
+        margin-top: 15px;        
     }
     }
     
@@ -125,9 +141,21 @@
 }
 
 .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] {
-    display: none;
+    margin-left: -100px;
 }
 .slider-handle {
     background-image: none !important;
     background-color: #8dc9a4 !important;
+}
+.btn-default {
+    border-radius: 0;
+    border:0;
+    width: 100%;
+    margin:0;   
+    background-color: #0096ff;
+    color: #fff;
+}
+.btn-default:hover{
+    background-color: #3cafff;
+    color: #fff;
 }

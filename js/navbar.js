@@ -23,4 +23,31 @@ $(document).ready(function ()
             $('.divider').removeClass('filter2');
         });
     });
+    
+    var asdf = $('#filter-list .checkbox input').change(function ()
+    {
+        var checkbox = $(this);
+        var parent = checkbox.parent();
+        var spans = parent.find('span');
+        var identifier = spans.eq(1);
+      
+        
+        
+        
+        
+        if (checkbox.is(':checked')){
+//            checkbox.removeAttr('checked');
+            identifier
+                .addClass('glyphicon-ok filter-true')
+                .removeClass('glyphicon-remove filter-false')
+            ;            
+        }
+        else {
+//            checkbox.attr('checked','checked');
+            identifier
+                .removeClass('glyphicon-ok filter-true')
+                .addClass('glyphicon-remove filter-false')
+            ;
+        }
+    });
 });
