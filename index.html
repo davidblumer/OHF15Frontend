@@ -30,7 +30,8 @@ body { height: 100%; margin: 0px; padding: 0px }
         scrollwheel: false,        
         mapTypeId: 'roadmap'      
         });      
-}</script>
+        };
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -62,10 +63,19 @@ body { height: 100%; margin: 0px; padding: 0px }
         </li>             
         <li class="refine-search">
             <form>
-                <b>500m</b>
-                    <div id="slider"></div>
-                <b>10km </b>
-                    
+                <div class="row">
+                    <div class="col-md-2">
+                        <b>500m</b>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-2">
+                        <b>10km </b>
+                    </div>
+                    <div class="col-md-10">
+                        <div id="slider"></div>
+                    </div>                    
+                </div>    
             </form>
         </li>
         
@@ -73,44 +83,62 @@ body { height: 100%; margin: 0px; padding: 0px }
         <li class="refine-search">
             <form>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"><span class="glyphicon glyphicon-tree-conifer"></span> nature
+                                <input type="checkbox">
+                                <span class="glyphicon glyphicon-tree-conifer"></span> 
+                                nature
+                                <span class="glyphicon glyphicon-ok filter-true"></span>
                             </label>
                         </div> 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"><span class="glyphicon glyphicon-heart"></span> romantic
+                                <input type="checkbox">
+                                <span class="glyphicon glyphicon-heart"></span> 
+                                romantic
+                                <span class="glyphicon glyphicon-ok filter-true"></span>
                             </label>
                         </div> 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"><span class="glyphicon glyphicon-home"></span> culture
+                                <input type="checkbox">
+                                <span class="glyphicon glyphicon-home"></span> 
+                                culture
+                                <span class="glyphicon glyphicon-ok filter-true"></span>
                             </label>
                         </div> 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"><span class="glyphicon glyphicon-book"></span> studying
+                                <input type="checkbox">
+                                <span class="glyphicon glyphicon-book"></span> 
+                                studying
+                                <span class="glyphicon glyphicon-ok filter-true"></span>
                             </label>
                         </div> 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"><span class="glyphicon glyphicon-glass"></span> Party
+                                <input type="checkbox">
+                                <span class="glyphicon glyphicon-glass"></span> 
+                                Party
+                                <span class="glyphicon glyphicon-ok filter-true"></span>
                             </label>
                         </div> 
                     </div>
                 </div>
             </form>
-        </li>             
+        <li class="filter-divider"></li>
+            
+        </li>
+        
     </ul> 
   </div>
 </nav>
