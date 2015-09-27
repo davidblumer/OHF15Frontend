@@ -89,10 +89,10 @@ function clearMarkers() {
 
 function updateData() {
 
-    clearMarkers();
+    
 
     var center = map.getCenter();
-    var url = "http://localhost:8000/api/pois";
+    var url = "http://82716380.ngrok.io/api/pois";
 
     var request = $.ajax({
         //url: "http://82716380.ngrok.io?lat=&lng=&distance=10",
@@ -111,6 +111,7 @@ function updateData() {
     })
 
     request.done(function (data) {
+        clearMarkers();
         for (var i in data.pois) {
 
             var poi = data.pois[i];
