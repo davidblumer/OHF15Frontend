@@ -11,7 +11,7 @@ window.onload = function() {
         var iconBase = 'images/marker/';
         var icons = {
           nature: {
-            icon: iconBase + 'marker_nature.png'
+            icon: iconBase + 'marker_nature.png',
           },
           culture: {
             icon: iconBase + 'marker_culture.png'
@@ -29,8 +29,9 @@ window.onload = function() {
           });
         };
         var marker = new google.maps.Marker({
-            position: (48.123913, 11.598894),
+            position:new google.maps.LatLng(48.123913, 11.598894),
             map: map,
+            icon: icons['nature'].icon,
             title: 'Hello World!'
         });
         
