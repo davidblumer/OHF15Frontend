@@ -1,14 +1,6 @@
-window.onload = function() {      
-        var map = new google.maps.Map(document.getElementById("mapbg"),
-        {        
-        center: new google.maps.LatLng(48.123913, 11.598894),        
-        zoom: 15,
-        scrollwheel: true,        
-        mapTypeId: 'roadmap',      
-        mapTypeControl: false
-        });
-        
-        var iconBase = 'images/marker/';
+var map;
+
+var iconBase = 'images/marker/';
         var icons = {
           nature: {
             icon: iconBase + 'marker_nature.png'
@@ -48,6 +40,18 @@ window.onload = function() {
           }
         };
 
+window.onload = function() {      
+        map = new google.maps.Map(document.getElementById("mapbg"),
+        {        
+            center: new google.maps.LatLng(48.123913, 11.598894),        
+            zoom: 15,
+            scrollwheel: true,        
+            mapTypeId: 'roadmap',      
+            mapTypeControl: false
+        });
+        
+        
+
         function addMarker(feature) {
           var marker = new google.maps.Marker({
             position: feature.position,
@@ -65,3 +69,55 @@ window.onload = function() {
         
 };      
  
+ function updateData ()
+ {
+     var center = map.getCenter();
+    
+var request = $.ajax({
+  url: "script.php", // TODO URL ANAPSSEN
+  method: "POST",
+  data: { zoom: 346346, lng: center.longitude, lat: center.latitude },
+  dataType: "json"
+});
+ 
+request.done(function( msg ) {
+  for (var i in msg)
+  {
+      var currentblaga = msg[i];
+      
+      // TODO: marker setzen
+  }
+  
+  
+});
+ 
+request.fail(function( jqXHR, textStatus ) {
+  alert( "Request failed: " + textStatus );
+});
+ };
+ 
+ $(document).ready(function()
+ {
+    updateData();
+    
+    window.setInterval(function()
+    {
+        updateData();
+    }, 5000);
+    
+     
+ });
+var whitelist = [];
+   var listen = $('#filter-list .checkbox input').each(function()
+   {
+    var checkbox = $(this);
+        if (checkbox.is(':checked'))
+        {
+        whitelist.push(checkbox.val());
+       
+        };
+   });
+           
+        
+        
+  
