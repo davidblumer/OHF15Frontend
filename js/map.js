@@ -100,9 +100,26 @@ function updateData() {
         method: "GET"
     });
 
+    var whitelist = [];
+    $(document).ready(function () {
+        $('#filter-list .checkbox input').each(function () {
+            var checkbox = $(this);
+            if (checkbox.is(':checked')) {
+                whitelist.push(checkbox.val());
+            }
+        });
+    })
+
     request.done(function (data) {
         for (var i in data.pois) {
-            addMarker(data.pois[i]);
+
+            var poi = data.pois[i];
+
+            if ($.inArray(poi.type.name, whitelist) !== -1)
+            {
+                addMarker(poi);
+            }
+
         }
     });
 
@@ -111,12 +128,4 @@ function updateData() {
     });
 };
 
-var whitelist = [];
-$(document).ready(function () {
-    $('#filter-list .checkbox input').each(function () {
-        var checkbox = $(this);
-        if (checkbox.is(':checked')) {
-            whitelist.push(checkbox.val());
-        }
-    });
-})
+
