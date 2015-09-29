@@ -40,11 +40,7 @@ $(document).ready(function ()
         var parent = checkbox.parent();
         var spans = parent.find('span');
         var identifier = spans.eq(1);
-      
-        
-        
-        
-        
+     
         if (checkbox.is(':checked')){
 //            checkbox.removeAttr('checked');
             identifier
@@ -59,6 +55,9 @@ $(document).ready(function ()
                 .addClass('glyphicon-remove filter-false')
             ;
         }
+        
+        currentData = 0;
+        updateData();
     });
     
 });

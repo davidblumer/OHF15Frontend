@@ -1,6 +1,7 @@
 var map;
 var markers = [];
-
+var currentData;
+var lastWhitelistCount;
 var iconBase = 'images/marker/';
 
 var icons = {
@@ -58,12 +59,6 @@ window.onload = function () {
         updateData();
     }, 5000);
 
-    //var marker = new google.maps.Marker({
-    //    position: new google.maps.LatLng(48.123913, 11.598894),
-    //    map: map,
-    //    icon: icons['nature'].icon,
-    //    title: 'Hello World!'
-    //});
 };
 
 function addMarker(poi) {
@@ -89,13 +84,10 @@ function clearMarkers() {
 
 function updateData() {
 
-    
-
     var center = map.getCenter();
-    var url = "http://82716380.ngrok.io/api/pois";
+    var url = "http://localhost:8000/api/pois";
 
     var request = $.ajax({
-        //url: "http://82716380.ngrok.io?lat=&lng=&distance=10",
         url: url,
         method: "GET"
     });
@@ -108,19 +100,28 @@ function updateData() {
                 whitelist.push(checkbox.val());
             }
         });
+        
+        if(lastWhitelistCount !== whitelist.length)
+        {
+            currentData = 0;
+        }
     })
-
+    
     request.done(function (data) {
-        clearMarkers();
-        for (var i in data.pois) {
+        if(currentData !== data.pois.length)
+        {
+            clearMarkers();
+            currentData = data.pois.length;
+            lastWhitelistCount = whitelist.length;
+            for (var i in data.pois) {
 
-            var poi = data.pois[i];
-
-            if ($.inArray(poi.type.name, whitelist) !== -1)
-            {
-                addMarker(poi);
+                var poi = data.pois[i];
+                
+                if ($.inArray(poi.type.name, whitelist) !== -1)
+                {
+                    addMarker(poi);
+                }
             }
-
         }
     });
 
